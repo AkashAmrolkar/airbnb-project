@@ -4,4 +4,4 @@ const router = express.router()
 
 router.get('/', getAllUsers)
 
-module.exports = router;
+module.exports = router; 
