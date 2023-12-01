@@ -19,7 +19,7 @@ const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 };
-
+ 
 app.get('/', getAllUsers)
 mongoose.connect(mongoUrl, options).then(() => {
     console.log('Connected to MongoDB');
