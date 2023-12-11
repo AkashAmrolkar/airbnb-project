@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose');
-const { getAllUsers } = require('./controllers/userController');
+const userRoutes = require('./routes/userRoutes')
 require('dotenv').config();
 
 const app = express();
@@ -20,12 +20,13 @@ const options = {
     useUnifiedTopology: true,
 };
  
-app.get('/', getAllUsers)
 mongoose.connect(mongoUrl, options).then(() => {
     console.log('Connected to MongoDB');
 }).catch((error) => {
     console.error('Error connecting to MongoDB:', error);
 });
+
+app.use('/users', userRoutes)
 
 app.listen(port, () => {
     console.log(`Server is connect to the port ${port}`)
